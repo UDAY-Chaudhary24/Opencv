@@ -1,0 +1,26 @@
+import cv2
+import numpy as np 
+img1=cv2.imread("kkl.jpg")
+gr=cv2.cvtColor(img1,cv2.COLOR_BGR2GRAY)
+_,thresh=cv2.threshold(gr,200,255,cv2.THRESH_BINARY)
+controes,_=cv2.findContours(thresh,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+cv2.drawContours(img1,controes,-1,(255,0,0),2)
+for contour in controes:
+    apr=cv2.approxPolyDP(contour,0.01*cv2.arcLength(contour,True),True)
+    cor=len(apr)
+    if(cor==3):
+        shape="triangle "
+    elif(cor==4):
+        shape="square"
+    else:
+        shape="no"
+cv2.drawContours(img1,[apr],0,(255,0,0),1)
+x=apr.ravel()[0]
+y=apr.ravel()[1]+100
+cv2.putText(img1,shape,(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),1)
+cv2.imshow("hello",img1)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+    
+
+    

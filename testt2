@@ -1,0 +1,6 @@
+import cv2
+import numpy as np
+img1=np.zeros((400,100),dtype="uint8")
+cv2.imshow("helo",img1)
+cv2.waitKey(0)
+cv2.destroyAllWindows()

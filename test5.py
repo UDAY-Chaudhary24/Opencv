@@ -1,0 +1,19 @@
+import cv2
+img1=cv2.imread("white_background_1920x1080.png",)
+h,w,c=img1.shape
+img2=cv2.resize(img1,(1920,1080))
+h=1920
+w=1080
+pt1=(0,w/2)
+pt2=(h/2,w)
+pt3=(h,w/2)
+pt4=(h/2,0)
+coor=(255,0,0)
+#cv2.line(img2,pt1,pt2,coor,1)
+cv2.line(img2,pt2,pt3,coor,1)
+cv2.line(img2,pt3,pt4,coor,1)
+cv2.line(img2,pt4,pt1,coor,1)
+#cv2.line(img2,(30,200),(100,800),(255,0,0),20)
+cv2.imshow("hello",img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
